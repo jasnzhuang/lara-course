@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Customer;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,11 @@ class CustomersController extends Controller
         // $customers= Customer::all();
         $activeCustomers = Customer::active()->get();
         $inactiveCustomers = Customer::inactive()->get();
+        $companies=Company::all();
 
         //    dd($activeCustomers);
 
-        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers'));
+        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers','companies'));
         // return view('internals.customers',[
         //     'activeCustomers' => $activeCustomers,
         //     'inactiveCustomers' => $inactiveCustomers,
