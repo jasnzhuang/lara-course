@@ -26,6 +26,7 @@ class CustomersController extends Controller
 
     public function store()
     {
+        // 增加一段测试注释内容
         $data = request()->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
