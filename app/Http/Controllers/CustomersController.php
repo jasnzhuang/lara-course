@@ -18,10 +18,7 @@ class CustomersController extends Controller
         //    dd($activeCustomers);
 
         return view('internals.customers', compact('activeCustomers', 'inactiveCustomers'));
-        // return view('internals.customers',[
-        //     'activeCustomers' => $activeCustomers,
-        //     'inactiveCustomers' => $inactiveCustomers,
-        // ]);
+        // 清理无用内容
     }
 
     public function store()
