@@ -35,4 +35,12 @@ class CustomersController extends Controller
         Customer::create($data);
         return redirect('/customers');
     }
+
+    public function show(Customer $customers)
+    {
+//        dd($customers);
+//        $customer=Customer::where('id', $customer)->firstOrFail();
+
+        return view('customers.show', compact('customers'));
+    }
 }
