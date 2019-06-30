@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    //fillable和guarded相互制约
-    // protected $fillable=['name', 'email', 'active'];
-
     protected $guarded = [];
 
 

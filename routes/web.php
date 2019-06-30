@@ -23,5 +23,6 @@ Route::view('about-us', 'about');
 // Route::get('/about', function () {
 //     return view('about');
 // });
-Route::get('/customers', 'CustomersController@list');
-Route::post('/customers', 'CustomersController@store');
+Route::get('customers', 'CustomersController@index');
+Route::get('customers/create', 'CustomersController@create');
+Route::post('customers', 'CustomersController@store');

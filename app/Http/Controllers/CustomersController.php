@@ -8,24 +8,22 @@ use Illuminate\Http\Request;
 
 class CustomersController extends Controller
 {
-    public function list()
+    public function index()
     {
-        // $activeCustomers=Customer::where('active',1)->get();
-        // $inactiveCustomers=Customer::where('active',0)->get();
-        // $customers= Customer::all();
         $activeCustomers = Customer::active()->get();
         $inactiveCustomers = Customer::inactive()->get();
         $companies=Company::all();
 
-        //    dd($activeCustomers);
+        return view('customers.index', compact('activeCustomers', 'inactiveCustomers', 'companies'));
 
-        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers','companies'));
-        // return view('internals.customers',[
-        //     'activeCustomers' => $activeCustomers,
-        //     'inactiveCustomers' => $inactiveCustomers,
-        // ]);
     }
 
+    public function create()
+    {
+        $companies = Company::all();
+
+        return view('customers.create', compact('companies'));
+    }
     public function store()
     {
         $data = request()->validate([
@@ -37,12 +35,6 @@ class CustomersController extends Controller
 
 
         Customer::create($data);
-        // $customer = new Customer();
-        // $customer->name=request('name');
-        // $customer->email=request('email');
-        // $customer->active=request('active');
-        // $customer->save();
-        // dd(request('name'));
-        return back();
+        return redirect('/customers');
     }
 }

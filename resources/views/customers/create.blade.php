@@ -1,15 +1,15 @@
 @extends('layout')
-@section('title','Customers List')
+@section('title','Add new Customer')
 
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h1>Customers</h1>
+            <h1>Add new Customer</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="customers" method="post" class="pb-5">
+            <form action="/customers" method="post" class="pb-5">
                 <div class="form-group ">
                     <label for="name">Name:</label>
                     <input type="text" name="name" value="{{ old('name') }}" class="form-control">
@@ -36,7 +36,7 @@
                     <select name="company_id" id="company_id" class="form-control">
                         @foreach($companies as $company)
                             <option value="{{$company->id}}">{{$company->name}}</option>
-                            @endforeach
+                        @endforeach
                     </select>
                 </div>
 
@@ -45,37 +45,5 @@
             </form>
         </div>
     </div>
-    <hr>
-    <div class="row">
-        <div class="col-6">
-            <ul>
-                <h3>Active Customers</h3>
-                @foreach ($activeCustomers as $activeCustomer)
-                    <li>{{ $activeCustomer->name }} <span
-                                class="text-muted"> ({{ $activeCustomer->company->name }})</span></li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="col-6">
-            <ul>
-                <h3>Inactive Customers</h3>
-                @foreach ($inactiveCustomers as $inactiveCustomer)
-                    <li>{{ $inactiveCustomer->name }} <span class="text-muted"> ({{ $inactiveCustomer->email }})</span>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            @foreach($companies as $company)
-                <h3>{{ $company->name }}</h3>
-                <ul>
-                    @foreach($company->customers as $customer)
-                        <li>{{ $customer->name  }}</li>
-                    @endforeach
-                </ul>
-            @endforeach
-        </div>
-    </div>
+
 @endsection
