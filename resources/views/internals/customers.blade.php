@@ -51,7 +51,8 @@
             <ul>
                 <h3>Active Customers</h3>
                 @foreach ($activeCustomers as $activeCustomer)
-                    <li>{{ $activeCustomer->name }} <span class="text-muted"> ({{ $activeCustomer->email }})</span></li>
+                    <li>{{ $activeCustomer->name }} <span
+                                class="text-muted"> ({{ $activeCustomer->company->name }})</span></li>
                 @endforeach
             </ul>
         </div>
@@ -65,5 +66,16 @@
             </ul>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-12">
+            @foreach($companies as $company)
+                <h3>{{ $company->name }}</h3>
+                <ul>
+                    @foreach($company->customers as $customer)
+                        <li>{{ $customer->name  }}</li>
+                    @endforeach
+                </ul>
+            @endforeach
+        </div>
+    </div>
 @endsection
